@@ -1,0 +1,202 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import Pagination from "../../components/Pagination.astro"
+import { PRODUCTS_INDEXED } from "../../consts";
+
+export const getStaticPaths = (() => {
+ return Object.keys(PRODUCTS_INDEXED).map((p) => ({
+    params: {category: p}
+  }))
+}) satisfies GetStaticPaths
+
+const { category } = Astro.params;
+
+const data = PRODUCTS_INDEXED[category as keyof typeof PRODUCTS_INDEXED].map((products) => {
+
+  let rutaImagen = "";
+
+  switch (products.categoria) {
+      case 'PS':
+          rutaImagen = '/IMG/' + products.imagen;
+          break;
+      case 'Xbox':
+          rutaImagen = '/IMG/' + products.imagen;
+          break;
+      case 'Nintendo':
+          rutaImagen = '/IMG/' + products.imagen;
+          break;
+      case 'PC':
+          rutaImagen = '/IMG/' + products.imagen;
+          break;
+      case 'Componentes':
+          rutaImagen = '/IMG/' + products.imagen;
+          break;
+      default:
+          rutaImagen = '/IMG/' + products.imagen;
+          break;
+  }
+
+  return {...products, rutaImagen}
+})
+
+---
+
+<Layout>
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="sidebar sticky-top" style="top: 5px; z-index: -10">
+                <h2>Filtros</h2>
+                <div class="form-group">
+                    <div class="filtro-label">
+                      <label for="filtroPrecio" style="font-size: 24px;">Precio:</label>
+                    </div>
+                    <select class="form-control" id="filtroPrecio">
+                        <option value="todos">Todos</option>
+                        <option value="bajo">Menor a S/ 400</option>
+                        <option value="medio">Entre S/ 400 y S/1000</option>
+                        <option value="alto">Mayor a S/ 1000</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary filtrar">Filtrar</button>
+            </div>
+        </div>
+        <!-- Productos -->
+        <div class="col-lg-9">
+          <div class="row" id="productos-container">
+              {data.map(({nombre, precio, precio_anterior, rutaImagen}) => (
+                <div class="col-md-6 col-lg-3 mb-4 producto" data-precio={precio}>
+                      <div class="card">
+                          <img src={rutaImagen} class="card-img-top" alt="Producto">
+                          <div class="card-body">
+                              <h5 class="card-title">{nombre}</h5>
+                              <p class="card-text price-final"><strong>Ahora: S/{precio}</strong></p>
+                              <p class="card-text"><del>Precio anterior: S/{precio_anterior}</del></p>
+                              <a href="#" class="btn btn-primary carcompra">Añadir al carrito</a>
+                          </div>
+                      </div>
+                  </div>
+              ))}
+          </div>
+        </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .sidebar {
+    background: rgba(19, 35, 47, 0.9);
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    height: calc(100vh - 80px); /* Ajusta la altura según el tamaño de la barra de navegación y el footer */
+    overflow-y: auto; /* Agrega scroll si es necesario */
+    text-align: left;
+      
+  }
+
+  .sidebar h2 {
+      color: #ffffff;
+  }
+
+  .sidebar .form-group label {
+      display: block;
+      color: #ffffff;
+      margin-bottom: 10px !important;
+  }
+
+  .sidebar .form-group select {
+      width: 100%;
+      padding: 8px;
+      margin-left: 5px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
+  }
+
+  .sidebar button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #1ab188;
+      border: none;
+      border-radius: 4px;
+      color: #ffffff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+
+  .sidebar button:hover {
+      background-color: #179b77;
+  }
+
+  .filtro-label {
+      margin-bottom: 10px; /* Espacio entre el label y el select */
+  }
+
+  .filtro-label label {
+      color: #ffffff; /* Color del texto */
+  }
+
+  .card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      
+  }
+
+  .card img {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      width: 100%; /* Ajusta la anchura de las imágenes */
+      height: auto; /* Mantiene la proporción de la imagen */
+      object-fit: cover; /* Asegura que la imagen se recorte para llenar el contenedor */
+  }
+
+  .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+  }
+  .card-body .btn {
+      margin-top: auto;
+  }
+  .card-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+  }
+
+  .card-text {
+      color: #666;
+      margin-bottom: 0.5rem;
+  }
+
+  .btn-primary {
+      background-color: #1ab188;
+      border-color: #1ab188;
+      padding-left: 5px !important;
+  }
+
+  .btn-primary:hover {
+      background-color: #179b77;
+      border-color: #179b77;
+  }
+
+  @media (max-width: 767px) {
+      .sidebar {
+          height: auto;
+          width: auto;
+          margin-bottom: 20px;
+      }
+  }
+
+  .price-final{
+      color: #4b4141;
+  }
+
+</style>

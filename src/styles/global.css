@@ -1,0 +1,162 @@
+/* PRINCIPAL*/
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    color: white;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.general {
+    padding-top: 0;
+    margin-top: 0;
+    border-top: 0;
+    margin: 0 0 0 0;
+    background-color: rgb(32, 32, 48);
+    color: white;
+}
+
+.d-flex-column {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.btn{
+    margin: 5px;
+}
+.Bienvenida {
+
+
+    color: #ffffff;
+    text-align: center;
+
+}
+.form-control{
+    margin-top: 5px;
+    height: 0, !important;
+}
+.content {
+    flex: 1;
+}
+
+section {
+    background: #1d232c;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+nav {
+    border-bottom: 2px solid #c7c7c7;
+    padding-bottom: 5px;
+}
+
+
+footer {
+    border-top: 2px solid #c7c7c7;
+    padding-bottom: 5px;
+}
+
+
+.Productos {
+    text-align: center;
+}
+
+img {
+    border-radius: 8px;
+}
+
+
+/*Carrusel Imagenes*/
+.carousel-item {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-item .col-6 {
+
+    padding: 0;
+    /* Elimina el relleno entre las columnas */
+    margin: 1;
+    /* Elimina el margen entre las columnas */
+}
+
+.carousel-item img {
+
+    width: 96%;
+    /* Ajusta este valor según el tamaño que desees */
+    height: auto;
+    margin: 1;
+    /* Elimina el margen entre las imágenes */
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    filter: invert(1);
+    /* Cambia el color de los iconos */
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: #003975 !important; /* Cambia el color de los indicadores */
+}
+.carousel-indicators .active {
+    background-color: #001c3a !important; /* Cambia el color del indicador activo */
+}
+
+
+
+/* Mision y vision*/
+
+
+
+.mision,
+.vision {
+    border-left: 4px solid #fff;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.mision h2,
+.vision h2 {
+    font-size: 1.5em;
+    margin: 0 0 10px 0;
+    color: #ffd700;
+}
+
+
+
+.imgMision {
+    width: 40px;
+    height: 30px;
+}
+
+/*modal editado fondo */
+/*carrito*/
+.navbar .nav-item .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+.navbar .nav-item .nav-link img {
+    margin-right: 0.5rem;
+}
+
+.navbar .badge {
+    margin-left: 0.5rem;
+}
+.carrito:hover{
+    background-color: rgb(43, 105, 67) !important;
+}
+
+

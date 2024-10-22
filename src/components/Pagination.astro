@@ -1,0 +1,83 @@
+---
+import type { Page } from 'astro';
+
+type Props = {
+  page: Page<{
+    rutaImagen: string;
+    nombre: string;
+    imagen: string;
+    precio: number;
+    precio_anterior: number;
+    categoria: string;
+}>
+}
+
+const { page } = Astro.props;
+
+const pages = Array.from({length: Math.floor(page.total / page.size) })
+---
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {page.url.prev ? <li class="page-item">
+      <a class="page-link" href={page?.url.prev} aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+    </li> : <li class="page-item disabled">
+          <span class="page-link" aria-hidden="true">&laquo;</span>
+          <span class="visually-hidden">Previous</span>
+      </li>}
+      {pages.map((_, i) => (
+        <li class={`page-item ${i === page.currentPage && "active"}`}>
+            <a class="page-link" href={`/productos/${i+1}`}>{i+1}</a>
+        </li>
+      ))}
+      {page.url.next ? <li class="page-item">
+        <a class="page-link" href="?pagina=<?php echo $pagina_actual + 1; ?>" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="visually-hidden">Next</span>
+        </a>
+      </li> : <li class="page-item disabled">
+        <span class="page-link" aria-hidden="true">&raquo;</span>
+        <span class="visually-hidden">Next</span>
+      </li>}
+  </ul>
+</nav>
+
+<style>
+  .pagination .page-link {
+    color: #1ab188;
+    background-color: #fff;
+    border: 1px solid #1ab188;
+}
+
+.pagination .page-link:hover {
+    color: #fff;
+    background-color: #1ab188;
+    border-color: #1ab188;
+}
+
+.pagination .page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #1ab188;
+    border-color: #1ab188;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #fff;
+    border-color: #dee2e6;
+}
+
+.pagination .page-item.disabled .page-link:hover {
+    background-color: #fff;
+    border-color: #dee2e6;
+}
+
+.pagination .page-link:focus {
+    box-shadow: 0 0 0 0.25rem rgba(26, 177, 136, 0.25);
+}
+</style>

@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+      <a class="navbar-brand" href="/">FULL GAMES</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Inicio
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/">Inicio</a></li>
+                <li><a class="dropdown-item" href="#Bienvenida">Bienvenida</a></li>
+                <li><a class="dropdown-item" href="#Productos">Productos</a></li>
+                <li><a class="dropdown-item" href="#HotSale">HotSale</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Productos
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="/productos/1">Todos</a></li>
+                    <li><a class="dropdown-item" href="/productos/play-station">Play Station</a></li>
+                    <li><a class="dropdown-item" href="/productos/xbox">Xbox</a></li>
+                    <li><a class="dropdown-item" href="/productos/nintendo">Nintendo</a></li>
+                    <li><a class="dropdown-item" href="/productos/pc">Computadoras</a></li>
+                    <li><a class="dropdown-item" href="/productos/componentes">Componentes</a></li>
+                </ul>
+            </li>
+
+              <li class="nav-item dropdown">
+                  <a class="nav-link" href="/nosotros" role="button">
+                      Nosotros
+                  </a>
+
+              </li>
+          </ul>
+          <form class="d-flex" method="GET" action="buscar.php">
+              <input class="form-control me-2 areabusqueda" type="search" name="q" placeholder="Buscar" aria-label="Buscar">
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
+          </form>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal">
+            Sign Up / Log In
+        </button>
+        <!-- Cart Button -->
+        <a href="#" class="btn btn-success btn-outline-light me-3 carrito">
+            <img src="/IMG/carrito.png" alt="Carrito" style="width: 24px; height: 24px;">
+            <span class="badge badge-pill badge-primary">0</span>
+        </a>
+      </div>
+    </div>
+</nav>
